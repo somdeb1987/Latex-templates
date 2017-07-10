@@ -1,0 +1,111 @@
+\documentclass[letterpaper,11pt]{article}
+\newlength{\outerbordwidth}
+\pagestyle{empty}
+\raggedbottom
+\raggedright
+\usepackage[svgnames]{xcolor}
+\usepackage{framed}
+\usepackage{tocloft}
+\usepackage{etoolbox}
+\robustify\cftdotfill
+
+
+%-----------------------------------------------------------
+%Edit these values as you see fit
+
+\setlength{\outerbordwidth}{3pt}  % Width of border outside of title bars
+\definecolor{shadecolor}{gray}{0.75}  % Outer background color of title bars (0 = black, 1 = white)
+\definecolor{shadecolorB}{gray}{0.93}  % Inner background color of title bars
+
+
+%-----------------------------------------------------------
+%Margin setup
+
+\setlength{\evensidemargin}{-0.25in}
+\setlength{\headheight}{0in}
+\setlength{\headsep}{0in}
+\setlength{\oddsidemargin}{-0.25in}
+\setlength{\paperheight}{11in}
+\setlength{\paperwidth}{8.5in}
+\setlength{\tabcolsep}{0in}
+\setlength{\textheight}{9.5in}
+\setlength{\textwidth}{7in}
+\setlength{\topmargin}{-0.3in}
+\setlength{\topskip}{0in}
+\setlength{\voffset}{0.1in}
+
+
+%-----------------------------------------------------------
+%Custom commands
+\newcommand{\resitem}[1]{\item #1 \vspace{-2pt}}
+\newcommand{\resheading}[1]{\vspace{8pt}
+	\parbox{\textwidth}{\setlength{\FrameSep}{\outerbordwidth}
+		\begin{shaded}
+			\setlength{\fboxsep}{0pt}\framebox[\textwidth][l]{\setlength{\fboxsep}{4pt}\fcolorbox{shadecolorB}{shadecolorB}{\textbf{\sffamily{\mbox{~}\makebox[6.762in][l]{\large #1} \vphantom{p\^{E}}}}}}
+		\end{shaded}
+	}\vspace{-5pt}
+}
+\newcommand{\ressubheading}[4]{
+	\begin{tabular*}{6.5in}{l@{\cftdotfill{\cftsecdotsep}\extracolsep{\fill}}r}
+		\textbf{#1} & #2 \\
+		\textit{#3} & \textit{#4} \\
+	\end{tabular*}\vspace{-6pt}}
+%-----------------------------------------------------------
+
+
+\begin{document}
+\begin{center}
+	\textbf{\Large Thesis Proposal} 
+\end{center}
+			
+
+
+	\begin{tabular*}{7in}{l@{\extracolsep{\fill}}r}
+		Student Name : \textbf{(Your Name)} 				& Advisor : \textbf{Advisor's Name}	\\
+		Email : (your email)								& (Your Institution / Department)	 \\
+	\end{tabular*}
+
+	
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\resheading{(Proposal Statement)}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\parbox{180mm}{\hspace{10mm} The prime focus of this proposed research is to develop and apply interface capturing numerical scheme in multiphase flow problem. At present the well accepted approach for this type of problems are Level-Set, Volume-of-Fluid and Lagrangian tracking methods. \\
+		
+	\hspace{10mm}The widely used LS (Level set) method suffers from several drawbacks. Topological changes simulated with the LS method are often under-resolved. As such, these changes only	occur due to the diffusion introduced by the LS method and not because of physical necessities. Additionally, the LS function should remain a signed distance function at all times, but
+	the LS advection distorts the interface. Therefore, a so-called reinitialization step must be
+	performed, where the LS function is replaced by a smoother, less distorted function which
+	has the same zero level-set. Although there are several techniques for the reinitialization
+	of the LS function, simple reinitialization techniques introduce numerical diffusion to the
+	solution. This leads to difficulties with volume conservation. \\
+	
+	\hspace{10mm}The VOF (Volume of Fluid) method forms a building block of computations involving two fluids separated by a sharp
+	interface. The VOF method satisfies compliance with mass conservation extremely well, but
+	sometimes it is difficult to capture the geometric properties of the complicated interface \\
+		
+	\hspace{10mm}The aim of this research is to formulate and apply the front-tracking method to model multiphase/multifluid
+	flows in confined geometries. The front-tracking method is based on a single-field formulation of the 
+	flow equations for the entire computational domain and so treats different phases as a single fluid with 
+	variable material properties. The effects of the surface tension are treated as body forces and added to the 
+	momentum equations as ${\delta}$ functions at the phase boundaries so that the flow equations can be solved using a 
+	conventional finite-difference or a finite-volume method on a fixed Eulerian grid. The interface, or front,
+	is tracked explicitly by connected Lagrangian marker points. Interfacial source terms such as surface tension 
+	forces are computed at the interface using the marker points and are then transferred to the Eulerian grid in
+	a conservative manner. Advection of fluid properties such as density and viscosity is achieved by following 
+	the motion of the interface. The front-tracking	method has many advantages including its conceptual simplicity, small numerical diffusion and flexibility	to include multiphysics effects such as thermocapillary, electric field, soluble surfactants and moving	contact lines.\\
+	}
+
+
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	\resheading{References}
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{enumerate}
+		\item (some reference).
+		\item (some reference)
+	\end{enumerate}
+	
+	
+\end{document}
